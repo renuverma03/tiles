@@ -1,0 +1,31 @@
+
+
+<div class="article-list-page">
+    <div class="container">        
+        <table class="table table-striped" width="100%">
+            <thead>
+                <tr>
+                    <th scope="col" width="5%">#</th>
+                    <th scope="col" width="95%">Title</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let index of userList; index as i">
+                <tr>
+                    <th scope="row">{{ userList[i].id }}</th>
+                    <td>{{ userList[i].title }}
+                        <a class="link" herf="javascript:void(0)" (click)="showDetails(index,i)">More..</a>
+                    </td>
+                </tr>
+                <div [ngClass]="isExpendable && item && item.id == userList[i].id ? 'show' : 'hide'">
+                    <ng-content> <app-tiles *ngIf="isExpendable" [setData]="item" [width]="width"
+                            [height]="height"></app-tiles></ng-content>
+                
+                
+                </div>
+            </tbody>
+        </table>
+
+        
+       
+    </div>
+</div>
